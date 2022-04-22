@@ -28,7 +28,7 @@ public class MarkdownParse {
                 newLine = markdown.length(); 
                 endLink = newLine - 1; // Get index of end of link
             } else {
-                endLink = newLine - 2; // Get index of end of link
+                endLink = newLine - 1; // Get index of end of link
             }
 
             String link;
