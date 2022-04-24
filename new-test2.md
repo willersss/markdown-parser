@@ -1,2 +1,1 @@
-# Title
-link1 [link2][some-thing.html]
+[link :D](something.c(om))
