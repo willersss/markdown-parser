@@ -17,29 +17,27 @@ public class MarkdownParse {
         while(currentIndex < markdown.length()) {
             int openBracket = markdown.indexOf("[", currentIndex);
             int closeBracket = markdown.indexOf("]", openBracket);
-
-            int beginLink = closeBracket + 2; // Skip to the start of the link
-
-            int newLine = markdown.indexOf("\n", closeBracket); // Find a new line if there is one
-
-            // If there is no newline then just get end of whole file and subtract
+            int beginLink = markdown.indexOf("(", closeBracket); // Skip to the start of the link
             int endLink;
-            if (newLine == -1) {
-                newLine = markdown.length(); 
-                endLink = newLine - 1; // Get index of end of link
-            } else {
-                endLink = newLine - 1; // Get index of end of link
-            }
-
             String link;
-            if (openBracket != -1) {
-                link = markdown.substring(beginLink, endLink);
-                toReturn.add(link);
-                currentIndex = newLine;
-            } else {
-                break;
+            int newLine = markdown.indexOf("\n", closeBracket); // Find a new line if there is one
+            if(beginLink != closeBracket + 1) {
+                if(markdown.indexOf("[", closeBracket + 1) == -1) {
+                    break;
+                }
+                else {
+                    currentIndex = markdown.indexOf("[", closeBracket + 1);
+                }
             }
-            System.out.println(link);
+            else {
+                endLink = markdown.indexOf(")", beginLink);
+                link = markdown.substring(beginLink + 1, endLink);
+                toReturn.add(link);
+                currentIndex = markdown.indexOf("[", closeBracket + 1);
+                if(currentIndex == -1) {
+                    break;
+                }
+            }
         }
 
         return toReturn;
