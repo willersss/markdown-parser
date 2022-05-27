@@ -20,7 +20,6 @@ public class MarkdownParse {
             int beginLink = markdown.indexOf("(", closeBracket); // Skip to the start of the link
             int endLink;
             String link;
-            int newLine = markdown.indexOf("\n", closeBracket); // Find a new line if there is one
             if(beginLink != closeBracket + 1) {
                 if(markdown.indexOf("[", closeBracket + 1) == -1) {
                     break;
@@ -49,5 +48,11 @@ public class MarkdownParse {
         String content = Files.readString(fileName);
         ArrayList<String> links = getLinks(content);
 	    System.out.println(links);
+        System.out.println("new edit woo");
     }
+
+    //new edit new edit
+    //ooh edit edit
+    //oooh spoooooooky new edit 
+    //weghawpeoghapwoeigh ewghpowaeighawopeghiwegoih
 }
